@@ -6,26 +6,26 @@ const Authentication = () => {
             <div class="user_options-container">
                 <div class="user_options-text">
                     <div class="user_options-unregistered">
-                        <h2 class="user_unregistered-title">Don't have an account?</h2>
+                        <h2 class="user_unregistered-title">Check our project information!</h2>
                         <p class="user_unregistered-text">
-                            Registrate for creating your courses and share them with people!
+                            Create your courses and shar them with people!
                         </p>
-                        <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+                        <button class="user_unregistered-signup" id="signup-button">About Us</button>
                     </div>
             
                     <div class="user_options-registered">
-                        <h2 class="user_registered-title">Have an account?</h2>
+                        <h2 class="user_registered-title">Don't have an account?</h2>
                         <p class="user_registered-text">
-                            Login and create your beautiful courses!
+                            Registrate for creating your courses and share them with people!
                         </p>
-                        <button class="user_registered-login" id="login-button">Login</button>
+                        <button class="user_registered-login" id="login-button">Sign up</button>
                     </div>
                 </div>
                 
                 <div class="user_options-forms" id="user_options-forms">
                     <div class="user_forms-login">
                         <h2 class="forms_title">Login</h2>
-                        <form class="forms_form">
+                        <form class="forms_form forms_form-login">
                             <fieldset class="forms_fieldset">
                                 <div class="forms_field">
                                     <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
@@ -39,24 +39,11 @@ const Authentication = () => {
                             </div>
                         </form>
                     </div>
-                    <div class="user_forms-signup">
-                        <h2 class="forms_title">Sign Up</h2>
-                        <form class="forms_form">
-                            <fieldset class="forms_fieldset">
-                                <div class="forms_field">
-                                    <input type="text" placeholder="Full Name" class="forms_field-input" required />
-                                </div>
-                                <div class="forms_field">
-                                    <input type="email" placeholder="Email" class="forms_field-input" required />
-                                </div>
-                                <div class="forms_field">
-                                    <input type="password" placeholder="Password" class="forms_field-input" required />
-                                </div>
-                            </fieldset>
-                            <div class="forms_buttons">
-                                <input type="submit" value="Sign up" class="forms_buttons-action">
-                            </div>
-                        </form>
+                    <div class="user_forms-about">
+                        <h2 class="forms_title forms_form-about">About Us</h2>
+                        <div class="about-information forms_form">
+                            Information about us.
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ function onPageChanged() {
             const { component } = link.dataset;
             Pages[component]();
         }
+        link.remove();
     });
 }
 
