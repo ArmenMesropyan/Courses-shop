@@ -1,3 +1,3 @@
-import generateRouter from './Route';
+import generateRouter from './route';
 
 export default generateRouter;
