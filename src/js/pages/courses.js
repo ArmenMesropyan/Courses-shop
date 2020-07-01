@@ -14,17 +14,11 @@ function serializeCourses(courses) {
 const Courses = () => {
     const courses = {
         J1uZWhRCH9NIHg7gI3mmI3Ufk2G2: [{
-                name: 'JS',
-                price: '1000',
-                description: 'JS Description',
-                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
-            },
-            {
-                name: 'JS',
-                price: '1000',
-                description: 'JS Description',
-            },
-        ],
+            name: 'JS',
+            price: '1000',
+            description: 'JS Description',
+            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
+        }],
     };
 
     document.getElementById('root').innerHTML = `
