@@ -1,0 +1,10 @@
+.courses__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.courses__item {
+    max-width: calc(33% - 20px);
+    margin: 10px;
+}

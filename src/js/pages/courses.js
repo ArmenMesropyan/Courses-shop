@@ -1,5 +1,5 @@
 import './courses.css';
-import { Navigation, CoursesList } from '../components';
+import { Navigation, CoursesList, logOut } from '../components';
 
 function serializeCourses(courses) {
     return Object.entries(courses).reduce((acc, [key, value]) => {
@@ -17,6 +17,7 @@ const Courses = () => {
                 name: 'JS',
                 price: '1000',
                 description: 'JS Description',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
             },
             {
                 name: 'JS',
@@ -30,6 +31,11 @@ const Courses = () => {
         ${Navigation()}
         ${CoursesList(serializeCourses(courses))}
     `;
+
+    const registeredLink = document.querySelector('.registered');
+
+    if (!registeredLink) return;
+    registeredLink.addEventListener('click', logOut);
 };
 
 export default Courses;

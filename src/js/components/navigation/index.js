@@ -1,3 +1,3 @@
-import Navigation from './navigation';
+import { Navigation, logOut } from './navigation';
 
-export default Navigation;
+export { Navigation, logOut };
