@@ -3,7 +3,7 @@ import './navigation.css';
 function logOut(e) {
     e.preventDefault();
     localStorage.removeItem('googleAuthId');
-    location.reload();
+    location.replace('/');
 }
 
 const Navigation = () => {
@@ -13,7 +13,7 @@ const Navigation = () => {
         <nav class="main-nav grey darken-2">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="#" class="main-nav__logo brand-logo">Courses Shop</a>
+                    <a href="/" class="main-nav__logo brand-logo">Courses Shop</a>
                     <ul id="nav-mobile" class="right">
                         ${isRegister ? `
                             <li>
