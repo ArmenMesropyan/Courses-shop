@@ -1,3 +1,5 @@
+import { GoogleIcon } from '../components';
+import { googleSign } from '../helpers';
 import './authentication.css';
 
 const Authentication = () => {
@@ -26,17 +28,7 @@ const Authentication = () => {
                     <div class="user_forms-login">
                         <h2 class="forms_title">Login</h2>
                         <form class="forms_form forms_form-login">
-                            <fieldset class="forms_fieldset">
-                                <div class="forms_field">
-                                    <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
-                                </div>
-                                <div class="forms_field">
-                                    <input type="password" placeholder="Password" class="forms_field-input" required />
-                                </div>
-                            </fieldset>
-                            <div class="forms_buttons">
-                                <input type="submit" value="Log In" class="forms_buttons-action">
-                            </div>
+                            ${GoogleIcon()}
                         </form>
                     </div>
                     <div class="user_forms-about">
@@ -53,6 +45,11 @@ const Authentication = () => {
     const signupButton = document.getElementById('signup-button');
     const loginButton = document.getElementById('login-button');
     const userForms = document.getElementById('user_options-forms');
+    const googleAuthBtn = document.getElementById('google-sign');
+
+    googleAuthBtn.addEventListener('click', () => {
+        googleSign();
+    });
 
 
     signupButton.addEventListener('click', () => {
