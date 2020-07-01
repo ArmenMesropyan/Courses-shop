@@ -10,7 +10,7 @@ const Authentication = () => {
                     <div class="user_options-unregistered">
                         <h2 class="user_unregistered-title">Check our project information!</h2>
                         <p class="user_unregistered-text">
-                            Create your courses and shar them with people!
+                            Create your courses and share them with people!
                         </p>
                         <button class="user_unregistered-signup" id="signup-button">About Us</button>
                     </div>

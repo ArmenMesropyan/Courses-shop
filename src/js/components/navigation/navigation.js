@@ -7,17 +7,26 @@ function logOut(e) {
 }
 
 const Navigation = () => {
-    const isRegister = localStorage.getItem('googleAuthId');
+        const isRegister = localStorage.getItem('googleAuthId');
 
-    return `
+        return `
         <nav class="main-nav grey darken-2">
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="#" class="main-nav__logo brand-logo">Courses Shop</a>
                     <ul id="nav-mobile" class="right">
-                        <li>
-                            <a class="${isRegister ? 'registered' : ''}" href="${!isRegister ? '/authentication' : ''}">${isRegister ? 'Log Out' : 'Log In'}</a>
-                        </li>
+                        ${isRegister ? `
+                            <li>
+                                <a href="/create-course">Create Course</a>
+                            </li>
+                            <li>
+                                <a class="registered">Log Out</a>
+                            </li>
+                        ` : `
+                            <li>
+                                <a href="/authentication">Log In</a>
+                            </li>
+                        `}
                     </ul>
                 </div>
             </div>
