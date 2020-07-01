@@ -1,14 +1,34 @@
 import './courses.css';
-import { Navigation } from '../components';
+import { Navigation, CoursesList } from '../components';
+
+function serializeCourses(courses) {
+    return Object.entries(courses).reduce((acc, [key, value]) => {
+        value.forEach((course) => {
+            course.user = key;
+            acc.push(course);
+        });
+        return acc;
+    }, []);
+}
 
 const Courses = () => {
-    const isRegister = localStorage.getItem('googleAuthId');
-    let text;
-    if (isRegister) text = 'Log Out';
-    else text = 'Log In';
+    const courses = {
+        J1uZWhRCH9NIHg7gI3mmI3Ufk2G2: [{
+                name: 'JS',
+                price: '1000',
+                description: 'JS Description',
+            },
+            {
+                name: 'JS',
+                price: '1000',
+                description: 'JS Description',
+            },
+        ],
+    };
 
     document.getElementById('root').innerHTML = `
-        ${Navigation(text)}
+        ${Navigation()}
+        ${CoursesList(serializeCourses(courses))}
     `;
 };
 
