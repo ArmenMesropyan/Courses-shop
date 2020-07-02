@@ -1,5 +1,11 @@
-import { Navigation, logOut, Course, CreateInputs } from '../components';
+import {
+    Navigation,
+    logOut,
+    Course,
+    CreateInputs,
+} from '../components';
 import './createCourse.css';
+import { firebaseActions } from '../helpers';
 
 const CreateCourse = () => {
         const isRegister = localStorage.getItem('googleAuthId');
@@ -32,19 +38,43 @@ const CreateCourse = () => {
     const courseDesc = document.getElementById('course_desc');
     const courseImage = document.getElementById('course_image');
 
+    const validateInputs = ({ name, price }) => {
+        const regExp = {
+            name: /^[a-zA-Z ]{2,30}$/,
+            price: /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/,
+        };
+
+        const inputs = { name, price };
+
+        const isValid = Object.entries(inputs).every(([key, value]) => regExp[key].test(value));
+
+        if (!isValid) return '<p>Invalid course</p>';
+
+        return `
+            <button class="course-presentation__btn btn waves-effect waves-light" type="button" name="action">Add Course</button>
+        `;
+    };
+
     const changeState = () => {
         const currentState = {
             image: courseImage.value,
             name: courseName.value,
             description: courseDesc.value,
             price: coursePrice.value,
+            user: localStorage.getItem('googleAuthId'),
         };
+        const isValid = validateInputs(currentState);
+
         document.querySelector('.course-presentation').innerHTML = `
             <div class="container">
                 ${Course(currentState)}
-                <button class="course-presentation__btn btn waves-effect waves-light" type="button" name="action">Add Course</button>
+                ${isValid}
             </div>
         `;
+
+        const btn = document.querySelector('.course-presentation__btn');
+
+        if (btn) btn.addEventListener('click', () => firebaseActions.setCourse(currentState));
     };
 
     courseName.addEventListener('input', changeState);

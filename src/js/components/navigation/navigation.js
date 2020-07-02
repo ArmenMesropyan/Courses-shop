@@ -17,6 +17,9 @@ const Navigation = () => {
                     <ul id="nav-mobile" class="right">
                         ${isRegister ? `
                             <li>
+                                <a href="/my-courses">My Courses</a>
+                            </li>
+                            <li>
                                 <a href="/create-course">Create Course</a>
                             </li>
                             <li>

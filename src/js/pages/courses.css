@@ -1,0 +1,16 @@
+.courses .card {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.courses__img {
+    padding-top: 50px;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.courses__content,
+.courses .card-action {
+    margin-top: auto;
+}

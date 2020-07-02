@@ -21,27 +21,19 @@ class Firebase {
         this.count = 0;
     }
 
-    setValue(data) {
+    setCourse(data) {
         const user = localStorage.getItem('googleAuthId');
         if (!user) return;
 
         this.currentValue = data;
+        const courseId = this.courses.push().key;
 
-        this.courses.child(user).set([data]);
+        this.courses.child(courseId).set(data);
     }
 
-    updateValue(state) {
+    getCourses(cb) {
         this.courses.orderByKey().on('value', (data) => {
-            if (this.count !== 0) {
-                this.count--;
-                return;
-            }
-
-            const user = localStorage.getItem('googleAuthId');
-            this.currentValue = data.val()[user];
-            this.currentValue.push(state);
-            this.count++;
-            this.courses.child(localStorage.getItem('googleAuthId')).update(this.currentValue);
+            cb(data.val());
         });
     }
 }

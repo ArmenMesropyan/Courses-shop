@@ -1,5 +1,4 @@
-const CreateInputs = () => {
-    return `
+const CreateInputs = () => `
         <div class="input-field">
             <input placeholder="Course Name" id="course_name" type="text">
             <label for="course_name" class="visually-hidden">Course Name</label>
@@ -17,6 +16,5 @@ const CreateInputs = () => {
             <label for="course_desc" class="visually-hidden">Course Description</label>
         </div>
     `;
-}
 
 export default CreateInputs;
