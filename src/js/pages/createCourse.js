@@ -42,6 +42,7 @@ const CreateCourse = () => {
         document.querySelector('.course-presentation').innerHTML = `
             <div class="container">
                 ${Course(currentState)}
+                <button class="course-presentation__btn btn waves-effect waves-light" type="button" name="action">Add Course</button>
             </div>
         `;
     };

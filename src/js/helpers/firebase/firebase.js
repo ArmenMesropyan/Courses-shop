@@ -10,4 +10,58 @@ const firebaseConfig = {
 
 window.firebase.initializeApp(firebaseConfig);
 
-export default firebaseConfig;
+const database = window.firebase.database();
+
+class Firebase {
+    constructor() {
+        this.state = {
+            currentValue: null,
+        };
+        this.courses = database.ref('/courses');
+        this.count = 0;
+    }
+
+    setValue(data) {
+        const user = localStorage.getItem('googleAuthId');
+        if (!user) return;
+
+        this.currentValue = data;
+
+        this.courses.child(user).set([data]);
+    }
+
+    updateValue(state) {
+        this.courses.orderByKey().on('value', (data) => {
+            if (this.count !== 0) {
+                this.count--;
+                return;
+            }
+
+            const user = localStorage.getItem('googleAuthId');
+            this.currentValue = data.val()[user];
+            this.currentValue.push(state);
+            this.count++;
+            this.courses.child(localStorage.getItem('googleAuthId')).update(this.currentValue);
+        });
+    }
+}
+
+const firebaseActions = new Firebase();
+
+// myFirebase.setValue({
+//     name: 'JS',
+//     price: '1000',
+//     description: 'JS Description',
+//     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
+//     user: 'J1uZWhRCH9NIHg7gI3mmI3Ufk2G2',
+// });
+
+// myFirebase.updateValue({
+//     name: 'JAVA',
+//     price: '1000',
+//     description: 'JS Description',
+//     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
+//     user: 'J1uZWhRCH9NIHg7gI3mmI3Ufk2G2',
+// });
+
+export { firebaseConfig, firebaseActions };

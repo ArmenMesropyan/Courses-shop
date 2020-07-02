@@ -1,3 +1,3 @@
-import firebaseConfig from './firebase';
+import { firebaseConfig, firebaseActions } from './firebase';
 
-export default firebaseConfig;
+export { firebaseConfig, firebaseActions };
