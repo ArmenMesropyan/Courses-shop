@@ -2,8 +2,6 @@ import './coursesList.css';
 import { Course } from '..';
 
 const CoursesList = (courses) => {
-    const user = localStorage.getItem('googleAuthId');
-    console.log('user: ', user);
     if (!courses) return '';
     const res = Object.values(courses).map((course) => `
         <li class="courses__item">
