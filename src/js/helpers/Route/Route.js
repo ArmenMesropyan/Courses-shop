@@ -7,7 +7,7 @@ function onPageChanged() {
     Object.values(links).forEach((link) => {
         if (link.getAttribute('href') === page) {
             const { component } = link.dataset;
-            if (component === 'Courses') {
+            if (component === 'Courses' || component === 'MyCourses') {
                 firebaseActions.getCourses(Pages[component]);
                 return;
             }
