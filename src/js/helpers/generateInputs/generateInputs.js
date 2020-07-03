@@ -54,6 +54,8 @@ function generateInputs(cb, buttonText = 'Add Button') {
         }
     };
 
+    changeState();
+
     courseName.addEventListener('input', changeState);
     coursePrice.addEventListener('input', changeState);
     courseDesc.addEventListener('input', changeState);
