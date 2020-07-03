@@ -3,7 +3,7 @@ import { Course } from '../../components';
 
 function generateInputs(cb, buttonText = 'Add Button') {
     const courseName = document.getElementById('course_name');
-    const coursePrice = document.getElementById('course_price');
+    const courseDownload = document.getElementById('course_download');
     const courseDesc = document.getElementById('course_desc');
     const courseImage = document.getElementById('course_image');
     const courseLink = document.getElementById('course_link');
@@ -11,8 +11,8 @@ function generateInputs(cb, buttonText = 'Add Button') {
     const validateInputs = ({ name, price, link }) => {
         const regExp = {
             name: /^[a-zA-Z ]{2,30}$/,
-            price: /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/,
             link: /(https?:\/\/[^\s]+)/g,
+            download: /(https?:\/\/[^\s]+)/g,
         };
 
         const inputs = { name, price, link };
@@ -31,7 +31,7 @@ function generateInputs(cb, buttonText = 'Add Button') {
             image: courseImage.value,
             name: courseName.value,
             description: courseDesc.value,
-            price: coursePrice.value,
+            download: courseDownload.value,
             link: courseLink.value,
             user: cookieActions.getCookie('googleAuthId'),
         };
@@ -57,7 +57,7 @@ function generateInputs(cb, buttonText = 'Add Button') {
     changeState();
 
     courseName.addEventListener('input', changeState);
-    coursePrice.addEventListener('input', changeState);
+    courseDownload.addEventListener('input', changeState);
     courseDesc.addEventListener('input', changeState);
     courseImage.addEventListener('input', changeState);
     courseLink.addEventListener('input', changeState);

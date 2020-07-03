@@ -4,8 +4,8 @@ const CreateInputs = () => `
             <label for="course_name" class="visually-hidden">Course Name</label>
         </div>
         <div class="input-field">
-            <input placeholder="Course Price" id="course_price" type="number">
-            <label for="course_price" class="visually-hidden">Course Price</label>
+            <input placeholder="Course Download Link" id="course_download" type="text">
+            <label for="course_download" class="visually-hidden">Course Download Link</label>
         </div>
         <div class="input-field">
             <input placeholder="Course Image" id="course_image" type="text">
