@@ -8,18 +8,17 @@ function generateInputs(cb, buttonText = 'Add Button') {
     const courseImage = document.getElementById('course_image');
     const courseLink = document.getElementById('course_link');
 
-    const validateInputs = ({ name, price, link }) => {
+    const validateInputs = ({ name, link, download }) => {
         const regExp = {
-            name: /^[a-zA-Z ]{2,30}$/,
             link: /(https?:\/\/[^\s]+)/g,
             download: /(https?:\/\/[^\s]+)/g,
         };
 
-        const inputs = { name, price, link };
+        const inputs = { link, download };
 
         const isValid = Object.entries(inputs).every(([key, value]) => regExp[key].test(value));
 
-        if (!isValid) return '<p>Invalid course</p>';
+        if (!isValid || !name.length) return '<p>Invalid course</p>';
 
         return `
             <button class="course-presentation__btn btn waves-effect waves-light" type="button" name="action">${buttonText}</button>

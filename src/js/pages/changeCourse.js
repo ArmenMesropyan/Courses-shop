@@ -7,8 +7,6 @@ import {
 import { generateInputs, firebaseActions } from '../helpers';
 
 const ChangeCourse = (courses) => {
-    console.log('courses: ', courses);
-
     if (!courses) {
         document.getElementById('root').innerHTML = '<h1>Oops.. something goes wrong! :(</h1>';
         return;
@@ -35,7 +33,6 @@ const ChangeCourse = (courses) => {
 
     const [, key] = location.pathname.split('*');
     const course = courses[key];
-    console.log('course: ', course);
 
     if (!course) {
         document.getElementById('root').innerHTML = '<h1>There is no courses with this key!</h1>';
@@ -43,13 +40,13 @@ const ChangeCourse = (courses) => {
     }
 
     const courseName = document.getElementById('course_name');
-    const coursePrice = document.getElementById('course_price');
+    const courseDownload = document.getElementById('course_download');
     const courseDesc = document.getElementById('course_desc');
     const courseImage = document.getElementById('course_image');
     const courseLink = document.getElementById('course_link');
 
     courseName.value = course.name;
-    coursePrice.value = course.price;
+    courseDownload.value = course.download;
     courseDesc.value = course.description;
     courseImage.value = course.image;
     courseLink.value = course.link;
@@ -57,6 +54,6 @@ const ChangeCourse = (courses) => {
     generateInputs((state) => {
         firebaseActions.updateCourse(key, state);
     }, 'Change Course');
-}
+};
 
 export default ChangeCourse;
