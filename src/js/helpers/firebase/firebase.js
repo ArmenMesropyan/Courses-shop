@@ -1,3 +1,5 @@
+import cookieActions from '../cookie';
+
 const firebaseConfig = {
     apiKey: 'AIzaSyAXRcPggI2MT7dWR20qT0dExs1iirpXJyg',
     authDomain: 'courses-shop-ab326.firebaseapp.com',
@@ -22,7 +24,7 @@ class Firebase {
     }
 
     setCourse(data) {
-        const user = localStorage.getItem('googleAuthId');
+        const user = cookieActions.getCookie('googleAuthId');
         if (!user) return;
 
         this.currentValue = data;
@@ -36,24 +38,12 @@ class Firebase {
             cb(data.val());
         });
     }
+
+    deleteCourse(id) {
+        this.courses.child(id).remove();
+    }
 }
 
 const firebaseActions = new Firebase();
-
-// myFirebase.setValue({
-//     name: 'JS',
-//     price: '1000',
-//     description: 'JS Description',
-//     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
-//     user: 'J1uZWhRCH9NIHg7gI3mmI3Ufk2G2',
-// });
-
-// myFirebase.updateValue({
-//     name: 'JAVA',
-//     price: '1000',
-//     description: 'JS Description',
-//     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',
-//     user: 'J1uZWhRCH9NIHg7gI3mmI3Ufk2G2',
-// });
 
 export { firebaseConfig, firebaseActions };

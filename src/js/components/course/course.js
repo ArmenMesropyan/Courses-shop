@@ -3,6 +3,7 @@ const Course = ({
     name,
     description,
     price,
+    link,
 } = {}) => `
     <div class="card">
         <div class="courses__img card-image">
@@ -14,7 +15,7 @@ const Course = ({
             <span class="courses__price">${price || 0}</span>
         </div>
         <div class="card-action">
-            <a href="#" class="courses__link">More about this course</a>
+            <a href="${link}" target="_blank" class="courses__link">More about this course</a>
         </div>
     </div>
 `;

@@ -1,13 +1,14 @@
 import './navigation.css';
+import { cookieActions } from '../../helpers';
 
 function logOut(e) {
     e.preventDefault();
-    localStorage.removeItem('googleAuthId');
+    cookieActions.removeCookie('googleAuthId');
     location.replace('/');
 }
 
 const Navigation = () => {
-        const isRegister = localStorage.getItem('googleAuthId');
+        const isRegister = cookieActions.getCookie('googleAuthId');
 
         return `
         <nav class="main-nav grey darken-2">

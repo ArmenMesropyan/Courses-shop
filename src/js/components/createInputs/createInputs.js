@@ -15,6 +15,10 @@ const CreateInputs = () => `
             <textarea placeholder="Course Description" id="course_desc" class="materialize-textarea"></textarea>
             <label for="course_desc" class="visually-hidden">Course Description</label>
         </div>
+        <div class="input-field">
+            <input placeholder="Course Link" id="course_link" type="text">
+            <label for="course_link" class="visually-hidden">Course Link</label>
+        </div>
     `;
 
 export default CreateInputs;

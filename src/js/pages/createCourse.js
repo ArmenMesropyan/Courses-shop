@@ -5,10 +5,10 @@ import {
     CreateInputs,
 } from '../components';
 import './createCourse.css';
-import { firebaseActions } from '../helpers';
+import { firebaseActions, cookieActions } from '../helpers';
 
 const CreateCourse = () => {
-        const isRegister = localStorage.getItem('googleAuthId');
+        const isRegister = cookieActions.getCookie('googleAuthId');
 
         document.getElementById('root').innerHTML = `
             ${isRegister ? `
@@ -37,14 +37,17 @@ const CreateCourse = () => {
     const coursePrice = document.getElementById('course_price');
     const courseDesc = document.getElementById('course_desc');
     const courseImage = document.getElementById('course_image');
+    const courseLink = document.getElementById('course_link');
 
-    const validateInputs = ({ name, price }) => {
+    const validateInputs = ({ name, price, link }) => {
+    console.log('link: ', link);
         const regExp = {
             name: /^[a-zA-Z ]{2,30}$/,
             price: /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/,
+            link: /(https?:\/\/[^\s]+)/g,
         };
 
-        const inputs = { name, price };
+        const inputs = { name, price, link };
 
         const isValid = Object.entries(inputs).every(([key, value]) => regExp[key].test(value));
 
@@ -61,7 +64,8 @@ const CreateCourse = () => {
             name: courseName.value,
             description: courseDesc.value,
             price: coursePrice.value,
-            user: localStorage.getItem('googleAuthId'),
+            link: courseLink.value,
+            user: cookieActions.getCookie('googleAuthId'),
         };
         const isValid = validateInputs(currentState);
 
@@ -74,13 +78,19 @@ const CreateCourse = () => {
 
         const btn = document.querySelector('.course-presentation__btn');
 
-        if (btn) btn.addEventListener('click', () => firebaseActions.setCourse(currentState));
+        if (btn) {
+            btn.addEventListener('click', () => {
+                firebaseActions.setCourse(currentState);
+                location.replace('/');
+            });
+        }
     };
 
     courseName.addEventListener('input', changeState);
     coursePrice.addEventListener('input', changeState);
     courseDesc.addEventListener('input', changeState);
     courseImage.addEventListener('input', changeState);
+    courseLink.addEventListener('input', changeState);
 };
 
 export default CreateCourse;
