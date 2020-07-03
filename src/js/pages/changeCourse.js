@@ -4,6 +4,7 @@ import {
     Course,
     CreateInputs,
 } from '../components';
+import { generateInputs, firebaseActions } from '../helpers';
 
 const ChangeCourse = (courses) => {
     console.log('courses: ', courses);
@@ -47,7 +48,15 @@ const ChangeCourse = (courses) => {
     const courseImage = document.getElementById('course_image');
     const courseLink = document.getElementById('course_link');
 
+    courseName.value = course.name;
+    coursePrice.value = course.price;
+    courseDesc.value = course.description;
+    courseImage.value = course.image;
+    courseLink.value = course.link;
 
+    generateInputs((state) => {
+        firebaseActions.updateCourse(key, state);
+    }, 'Change Course');
 }
 
 export default ChangeCourse;

@@ -21,6 +21,7 @@ class Firebase {
         };
         this.courses = database.ref('/courses');
         this.count = 0;
+        this.setCourse = this.setCourse.bind(this);
     }
 
     setCourse(data) {
@@ -41,6 +42,10 @@ class Firebase {
 
     deleteCourse(id) {
         this.courses.child(id).remove();
+    }
+
+    updateCourse(id, course) {
+        this.courses.child(id).update(course);
     }
 }
 
