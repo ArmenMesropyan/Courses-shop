@@ -40,10 +40,11 @@ const MyCourses = (courses) => {
 
     const deleteButtons = document.querySelectorAll('.courses-actions__delete');
 
-    deleteButtons.forEach((btn) => btn.addEventListener('click', ({ target }) => {
-        const id = target.dataset.key;
+    deleteButtons.forEach((btn) => btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = e.target.dataset.key;
         firebaseActions.deleteCourse(id);
-    }));
+    }), false);
 };
 
 export default MyCourses;
