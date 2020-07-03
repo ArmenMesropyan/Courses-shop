@@ -1,5 +1,6 @@
 import './courses.css';
 import { Navigation, CoursesList, logOut } from '../components';
+import { deleteTextNodes } from '../helpers';
 
 const Courses = (courses) => {
     document.getElementById('root').innerHTML = `
@@ -8,6 +9,7 @@ const Courses = (courses) => {
     `;
 
     const registeredLink = document.querySelector('.registered');
+    deleteTextNodes('.courses__list');
 
     if (!registeredLink) return;
     registeredLink.addEventListener('click', logOut);

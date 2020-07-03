@@ -4,10 +4,9 @@ import {
     CoursesActions,
 } from '../components';
 
-import { firebaseActions, cookieActions } from '../helpers';
+import { firebaseActions, cookieActions, deleteTextNodes } from '../helpers';
 
-console.log('logOut: ', logOut);
-const MyCourse = (courses) => {
+const MyCourses = (courses) => {
     const user = cookieActions.getCookie('googleAuthId');
     if (!user) {
         document.getElementById('root').innerHTML = '<h1>Please Registrate!</h1>';
@@ -32,6 +31,8 @@ const MyCourse = (courses) => {
         </section>
     `;
 
+    deleteTextNodes('.courses-actions__list');
+
     const registeredLink = document.querySelector('.registered');
 
     if (!registeredLink) return;
@@ -45,4 +46,4 @@ const MyCourse = (courses) => {
     }));
 };
 
-export default MyCourse;
+export default MyCourses;

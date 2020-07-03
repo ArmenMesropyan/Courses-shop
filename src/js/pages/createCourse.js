@@ -40,7 +40,6 @@ const CreateCourse = () => {
     const courseLink = document.getElementById('course_link');
 
     const validateInputs = ({ name, price, link }) => {
-    console.log('link: ', link);
         const regExp = {
             name: /^[a-zA-Z ]{2,30}$/,
             price: /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/,
